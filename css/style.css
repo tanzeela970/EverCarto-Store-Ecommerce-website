@@ -286,7 +286,37 @@ nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px sol
 .empty-icon{font-size:80px;margin-bottom:24px;opacity:.4}
 .empty-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:8px}
 .empty-sub{font-size:15px;color:var(--txt2);margin-bottom:24px}
+@media (max-width: 768px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 0;
+  }
 
+  .order-summary {
+    position: static; /* removes sticky on mobile */
+    top: auto;
+  }
+
+  .cart-item {
+    grid-template-columns: 70px 1fr;
+    grid-template-areas:
+      "img info"
+      "img price";
+    gap: 12px;
+  }
+
+  .cart-item-img {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+
+  /* optional: move price under name */
+  .cart-item > div:last-child {
+    align-items: flex-start;
+  }
+}
 .checkout-layout{display:grid;grid-template-columns:1fr 360px;gap:48px;padding:48px 0;align-items:start}
 .checkout-section{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);padding:28px;margin-bottom:16px}
 .checkout-section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:20px}
