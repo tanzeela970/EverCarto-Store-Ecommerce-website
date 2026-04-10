@@ -46,4 +46,4 @@ A production-level frontend e-commerce platform built entirely with HTML, CSS, a
 - localStorage for cart, wishlist, orders, products, and settings
 - No frameworks, no npm, no build step — open index.html and go
 
-## Project Structure
+
