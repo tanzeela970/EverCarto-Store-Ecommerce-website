@@ -1,0 +1,171 @@
+
+/* ── Company-page extras ── */
+.logo img {height: 60px;object-fit: contain;cursor: pointer;}
+/* Mobile devices */
+@media (max-width: 768px) {
+.logo img { height: 30px; /* smaller size for mobile */}
+@media (max-width: 768px){
+.btn-outline{  padding: 0px 8px !important;  font-size: 11px !important;}
+}
+}
+.page-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:72px 24px;text-align:center}
+.page-hero p.section-label{text-align:center;}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,72px);font-weight:300;line-height:1.08;margin-bottom:18px}
+.page-hero h1 em{font-style:italic;color:var(--accent)}
+.page-hero .lead{font-size:17px;color:var(--txt2);max-width:560px;margin:0 auto;line-height:1.75}
+
+/* ABOUT */
+.about-story{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:72px 0;align-items:center}
+.about-story-img{border-radius:var(--rad-lg);overflow:hidden;background:var(--bg3);height:460px;display:flex;align-items:center;justify-content:center;font-size:120px}
+.about-story-text .section-label{margin-bottom:12px}
+.about-story-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:300;line-height:1.2;margin-bottom:24px}
+.about-story-text p{font-size:15px;color:var(--txt2);line-height:1.85;margin-bottom:16px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:48px 0}
+.stat-item{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--txt);line-height:1}
+.stat-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);margin-top:8px;font-weight:500}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:40px}
+.value-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);padding:32px 24px;transition:.2s}
+.value-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.value-icon{font-size:36px;margin-bottom:16px}
+.value-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;margin-bottom:10px}
+.value-text{font-size:14px;color:var(--txt2);line-height:1.7}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;margin-top:40px}
+.team-card{text-align:center}
+.team-avatar{width:100%;aspect-ratio:1;border-radius:var(--rad-lg);background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:56px;margin-bottom:16px;border:1px solid var(--border)}
+.team-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;margin-bottom:4px}
+.team-role{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:500}
+
+/* BLOG */
+.blog-featured{display:grid;grid-template-columns:1.6fr 1fr;gap:32px;margin:48px 0}
+.blog-feat-img{border-radius:var(--rad-lg);background:var(--bg2);height:380px;display:flex;align-items:center;justify-content:center;font-size:80px;overflow:hidden}
+.blog-feat-body{display:flex;flex-direction:column;justify-content:center;gap:12px}
+.blog-tag{display:inline-block;padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:500;background:var(--accent3);color:var(--accent2);width:fit-content}
+.blog-feat-title{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,34px);font-weight:300;line-height:1.25}
+.blog-feat-title:hover{color:var(--accent2);cursor:pointer}
+.blog-feat-meta{font-size:13px;color:var(--txt3);display:flex;gap:16px;align-items:center}
+.blog-feat-excerpt{font-size:15px;color:var(--txt2);line-height:1.8}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-bottom:48px}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);overflow:hidden;transition:.2s;cursor:pointer}
+.blog-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--border2)}
+.blog-card-img{height:200px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:56px}
+.blog-card-body{padding:20px}
+.blog-card-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;margin:8px 0 10px;line-height:1.35}
+.blog-card:hover .blog-card-title{color:var(--accent2)}
+.blog-card-excerpt{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:14px}
+.blog-card-meta{font-size:12px;color:var(--txt3);display:flex;gap:12px}
+.blog-cats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.blog-cat-btn{padding:8px 18px;border:1px solid var(--border);border-radius:20px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--txt2);transition:.2s}
+.blog-cat-btn:hover,.blog-cat-btn.active{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+
+/* CAREERS */
+.culture-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:40px}
+.culture-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);padding:28px 22px;text-align:center;transition:.2s}
+.culture-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.culture-icon{font-size:40px;margin-bottom:14px}
+.culture-title{font-size:15px;font-weight:500;margin-bottom:8px}
+.culture-text{font-size:13px;color:var(--txt2);line-height:1.7}
+.job-list{margin-top:8px}
+.job-item{display:flex;align-items:center;gap:20px;padding:22px 24px;background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);margin-bottom:10px;transition:.2s;cursor:pointer}
+.job-item:hover{border-color:var(--accent2);transform:translateX(4px)}
+.job-dept{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;min-width:100px}
+.job-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;flex:1}
+.job-item:hover .job-title{color:var(--accent2)}
+.job-meta{display:flex;gap:10px;align-items:center;flex-shrink:0}
+.job-badge{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.5px;background:var(--bg2);color:var(--txt2);border:1px solid var(--border)}
+.job-arrow{font-size:18px;color:var(--txt3);transition:.2s}
+.job-item:hover .job-arrow{color:var(--accent2);transform:translateX(3px)}
+.job-filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:32px}
+.benefit-item{display:flex;gap:14px;align-items:flex-start;padding:18px;background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg)}
+.benefit-icon{font-size:22px;flex-shrink:0}
+.benefit-title{font-size:14px;font-weight:500;margin-bottom:4px}
+.benefit-text{font-size:13px;color:var(--txt2);line-height:1.6}
+
+/* PRESS */
+.press-hero-strip{display:flex;gap:24px;padding:40px 0;border-bottom:1px solid var(--border);overflow-x:auto;scroll-snap-type:x mandatory}
+.press-logo-pill{flex-shrink:0;scroll-snap-align:start;height:52px;padding:0 28px;background:var(--card);border:1px solid var(--border);border-radius:var(--rad-sm);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;letter-spacing:1px;color:var(--txt3);white-space:nowrap;transition:.2s}
+.press-logo-pill:hover{border-color:var(--border2);color:var(--txt)}
+.press-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin:40px 0}
+.press-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);padding:28px;transition:.2s;cursor:pointer}
+.press-card:hover{border-color:var(--border2);box-shadow:var(--shadow);transform:translateY(-2px)}
+.press-source{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:12px}
+.press-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;line-height:1.35;margin-bottom:12px}
+.press-card:hover .press-title{color:var(--accent2)}
+.press-excerpt{font-size:13px;color:var(--txt2);line-height:1.7;margin-bottom:16px}
+.press-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--txt3)}
+.press-read-link{font-size:12px;color:var(--accent2);font-weight:500;letter-spacing:.5px}
+.releases-section{margin-top:48px}
+.release-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.release-date{font-size:12px;color:var(--txt3);letter-spacing:1px;min-width:80px;padding-top:4px}
+.release-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;margin-bottom:6px;line-height:1.3}
+.release-title:hover{color:var(--accent2);cursor:pointer}
+.release-excerpt{font-size:13px;color:var(--txt2);line-height:1.65}
+.contact-press{background:var(--card);border:1px solid var(--border);border-radius:var(--rad-lg);padding:32px;display:flex;gap:24px;align-items:flex-start;margin-top:40px}
+.contact-press-icon{width:48px;height:48px;border-radius:50%;background:var(--accent3);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+
+/* shared */
+.section-divider{height:1px;background:var(--border);margin:56px 0}
+.cta-strip{background:var(--txt);color:var(--bg);padding:64px 40px;text-align:center;margin-top:80px}
+.cta-strip h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;margin-bottom:16px;opacity:.95}
+.cta-strip p{font-size:15px;opacity:.6;max-width:440px;margin:0 auto 28px;line-height:1.7}
+.btn-light{padding:13px 28px;background:var(--bg);color:var(--txt);border-radius:var(--rad-sm);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:.2s}
+.btn-light:hover{background:var(--accent3);color:var(--accent2)}
+.btn-light-outline{padding:13px 28px;border:1px solid rgba(255,255,255,.35);color:var(--bg);border-radius:var(--rad-sm);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:.2s}
+.btn-light-outline:hover{border-color:rgba(255,255,255,.7)}
+
+@media(max-width:900px){
+  .about-story{grid-template-columns:1fr}
+  .about-story-img{height:300px}
+  .blog-featured{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(3,1fr)}
+  .presskit-card{grid-template-columns:1fr}
+  .presskit-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+}
+@media(max-width:600px){
+  .stat-row{grid-template-columns:1fr}
+  .job-item{flex-wrap:wrap;gap:10px}
+  .job-dept{min-width:auto}
+}
+.btn-primary {  display: inline-block;  max-width: 100%;}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+.btn-primary {  width: auto;           /* don't force full width */  padding: 10px 16px;    /* slightly smaller padding */  font-size: 14px;       /* adjust text size */}
+}
+.blog-feat-img,
+.blog-card-img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.blog-feat-img img,
+.blog-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.logo-footer { display: flex; align-items: center;}
+@media (max-width: 768px) {
+.logo-footer {  justify-content: center;    width: 100%;}
+}
+.value-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(200,169,126,0.1);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.team-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}

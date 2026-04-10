@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EverCarto — Modern Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+<div class="modal-overlay" id="quickViewModal" style="display:none" onclick="closeQuickView(event)">
+  <div class="modal" id="quickViewContent"></div>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo" style="cursor:pointer" onclick="goPage('home')">
+   <img src="assets/logo.png" alt="LUMIÈRE Logo">
+ </div>
+    <div class="nav-links">
+      <button onclick="goPage('home')" id="nav-home" class="active">Home</button>
+      <button onclick="goPage('shop')" id="nav-shop">Shop</button>
+      <button onclick="goPage('wishlist')" id="nav-wishlist">Wishlist</button>
+      <button onclick="goPage('auth')" id="nav-auth">Sign In</button>
+    </div>
+    <div class="search-bar" style="margin-left:auto;margin-right:12px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="globalSearch" placeholder="Search products..." oninput="debounceSearch(this.value)" onfocus="goPage('search')"/>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" onclick="toggleDark()" title="Toggle dark mode" id="darkBtn" style="font-size:18px">🌙</button>
+      <button class="icon-btn" onclick="goPage('wishlist')" title="Wishlist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="badge" id="wishBadge" style="display:none">0</span>
+      </button>
+      <button class="icon-btn" onclick="goPage('cart')" title="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge" id="cartBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="section-label">New Collection 2026</p>
+      <h1>Curated for <em>Every</em> Moment</h1>
+      <p>Discover our handpicked selection of premium products — where quality meets contemporary design.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="goPage('shop')">Shop Now</button>
+        <button class="btn-outline" onclick="document.getElementById('featured').scrollIntoView({behavior:'smooth'})">View Collections</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-grid">
+        <div class="hero-img hero-img-1">
+          <div class="hero-img-inner">
+            <img src="assets/dress.jpeg" alt="Product 1">
+          </div>
+        </div>
+
+        <div class="hero-img hero-img-2">
+          <div class="hero-img-inner">
+            <img src="assets/electronix.jpeg" alt="Product 2">
+          </div>
+        </div>
+
+        <div class="hero-img hero-img-3">
+          <div class="hero-img-inner">
+            <img src="assets/still-life-wireless-cyberpunk-headphones.jpg" alt="Product 3">
+          </div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">4.9★</div>
+        <div class="lbl">Customer Rating</div>
+      </div>
+    </div>
+  </div>
+  <div class="container section" id="featured">
+    <p class="section-label">Shop by Category</p>
+    <h2 class="section-title">Browse Collections</h2>
+    <div class="categories-grid" style="margin-top:32px" id="categoriesGrid"></div>
+  </div>
+  <div class="container section" id="bestSellers" style="padding-top:0">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px">
+      <div><p class="section-label">Handpicked for You</p><h2 class="section-title" style="margin-bottom:0">Featured Products</h2></div>
+      <button class="btn-outline" onclick="goPage('shop')" style="padding:10px 22px;font-size:12px">View All →</button>
+    </div>
+    <div class="products-grid" id="featuredGrid"></div>
+  </div>
+  <div class="container section" id="newArrivals" style="padding-top:0">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px">
+      <div><p class="section-label">What's Hot</p><h2 class="section-title" style="margin-bottom:0">New Arrivals</h2></div>
+    </div>
+    <div class="products-grid" id="trendingGrid"></div>
+  </div>
+  
+  <div class="container section" style="padding-top:0">
+    <p class="section-label">What They Say</p>
+    <h2 class="section-title" style="margin-bottom:32px">Customer Stories</h2>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </div>
+  <div class="newsletter">
+    <div class="container">
+      <p class="section-label" style="text-align:center">Stay Connected</p>
+      <h2 class="section-title" style="text-align:center">Get 15% Off Your First Order</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Subscribe to receive exclusive offers, early access, and curated picks directly in your inbox.</p>
+      <div class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" id="nlEmail"/>
+        <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<div class="page" id="page-shop">
+  <div class="container">
+    <div class="breadcrumb"><button onclick="goPage('home')">Home</button><span class="breadcrumb-sep">›</span><span style="color:var(--txt)">Shop</span></div>
+    <div class="shop-layout">
+      <aside class="filters-panel">
+        <div class="filters-header">Filters</div>
+        <div class="filter-group">
+          <div class="filter-group-title">Category</div>
+          <label class="filter-option"><input type="checkbox" value="all" id="catAll" checked onchange="filterProducts()"/><span>All Products</span></label>
+          <label class="filter-option"><input type="checkbox" value="Home Decor" onchange="filterProducts()"/><span>Home Decor</span></label>
+          <label class="filter-option"><input type="checkbox" value="Clothing" onchange="filterProducts()"/><span>Clothing</span></label>
+          <label class="filter-option"><input type="checkbox" value="Electronics" onchange="filterProducts()"/><span>Electronics</span></label>
+          <label class="filter-option"><input type="checkbox" value="Wellness" onchange="filterProducts()"/><span>Wellness</span></label>
+          <label class="filter-option"><input type="checkbox" value="Accessories" onchange="filterProducts()"/><span>Accessories</span></label>
+        </div>
+        <div class="filter-group">
+          <div class="filter-group-title">Price Range (PKR)</div>
+          <div class="price-inputs">
+            <input type="number" class="price-input" id="priceMin" placeholder="0" value="0" onchange="filterProducts()"/>
+            <span style="color:var(--txt3)">—</span>
+            <input type="number" class="price-input" id="priceMax" placeholder="250000" value="250000" onchange="filterProducts()"/>
+          </div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-group-title">Rating</div>
+          <label class="filter-option"><input type="radio" name="rating" value="0" checked onchange="filterProducts()"/><span>All Ratings</span></label>
+          <label class="filter-option"><input type="radio" name="rating" value="4" onchange="filterProducts()"/><span>4★ & above</span></label>
+          <label class="filter-option"><input type="radio" name="rating" value="4.5" onchange="filterProducts()"/><span>4.5★ & above</span></label>
+        </div>
+        <div class="filter-group">
+          <div class="filter-group-title">Availability</div>
+          <label class="filter-option"><input type="checkbox" id="inStockOnly" onchange="filterProducts()"/><span>In Stock Only</span></label>
+        </div>
+        <button class="btn-outline" style="width:100%;padding:10px" onclick="resetFilters()">Clear Filters</button>
+      </aside>
+      <div>
+        <div class="sort-bar">
+          <span class="results-count" id="resultsCount"></span>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <select id="sortSelect" onchange="filterProducts()">
+              <option value="default">Sort: Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="popular">Most Popular</option>
+              <option value="newest">Newest</option>
+            </select>
+            <div class="view-toggle">
+              <button class="view-btn active" id="viewGrid" onclick="setView('grid')" title="Grid">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              </button>
+              <button class="view-btn" id="viewList" onclick="setView('list')" title="List">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="2"/><rect x="3" y="11" width="18" height="2"/><rect x="3" y="18" width="18" height="2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="shopGrid"></div>
+        <div class="pagination" id="shopPagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div class="page" id="page-detail">
+  <div class="container">
+    <div class="breadcrumb" id="detailBreadcrumb"></div>
+    <div class="detail-layout" id="detailLayout"></div>
+    <div class="recently-viewed" id="recentlyViewed"></div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="page" id="page-cart">
+  <div class="container">
+    <div class="breadcrumb"><button onclick="goPage('home')">Home</button><span class="breadcrumb-sep">›</span><span style="color:var(--txt)">Shopping Cart</span></div>
+    <div class="cart-layout" id="cartLayout"></div>
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="page" id="page-checkout">
+  <div class="container">
+    <div class="breadcrumb"><button onclick="goPage('home')">Home</button><span class="breadcrumb-sep">›</span><button onclick="goPage('cart')">Cart</button><span class="breadcrumb-sep">›</span><span style="color:var(--txt)">Checkout</span></div>
+    <div class="checkout-layout" id="checkoutLayout"></div>
+  </div>
+</div>
+
+<!-- AUTH -->
+<div class="page" id="page-auth">
+  <div class="auth-layout" id="authLayout"></div>
+</div>
+
+<!-- WISHLIST -->
+<div class="page" id="page-wishlist">
+  <div class="container" style="padding-top:40px;padding-bottom:80px">
+    <div class="breadcrumb"><button onclick="goPage('home')">Home</button><span class="breadcrumb-sep">›</span><span style="color:var(--txt)">Wishlist</span></div>
+    <div style="display:flex;align-items:baseline;gap:12px;margin:20px 0 32px">
+      <h1 class="section-title" style="margin-bottom:0">My Wishlist</h1>
+      <span id="wishlistCount" style="font-size:14px;color:var(--txt3)"></span>
+    </div>
+    <div id="wishlistContent"></div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="page" id="page-search">
+  <div class="container">
+    <div class="search-results-header"><h2 id="searchTitle">Search Results</h2></div>
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="page" id="page-success">
+  <div class="success-layout">
+    <div class="success-card">
+      <div class="success-icon">🎉</div>
+      <h1 class="success-title">Order Placed!</h1>
+      <p class="success-sub">Thank you for your purchase. Your order has been confirmed and will be shipped within 2–3 business days.</p>
+      <div class="order-num">Order Number: <span id="orderNum">#LM2026-0001</span></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-primary" onclick="goPage('home')">Continue Shopping</button>
+        <button class="btn-outline" style="padding:14px 28px">Track Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--footer-->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+       <div class="logo-footer" style="cursor:pointer" onclick="goPage('home')">
+   <img src="assets/logo.png" alt="LUMIÈRE Logo" style="height:50px; object-fit:contain;">
+ </div>
+        <p class="footer-tagline">Curating exceptional products for modern living. Quality, design, and craftsmanship in every piece.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <div class="footer-links"><button onclick="goPage('shop')">All Products</button><button onclick="scrollToSection('#newArrivals')">New Arrivals</button><button onclick="scrollToSection('#bestSellers')">Best Sellers</button><button>Sale</button></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <div class="footer-links"><button onclick="window.location.href='support_pages.html#page-faq'">FAQ</button><button onclick="window.location.href='support_pages.html#page-shipping'">Shipping</button><button onclick="window.location.href='support_pages.html#page-returns'">Returns</button><button onclick="window.location.href='support_pages.html#page-contact'">Contact Us</button></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links"><button onclick="window.location.href='company_pages.html#page-about'">About</button><button onclick="window.location.href='company_pages.html#page-blog'">Blog</button><button onclick="window.location.href='company_pages.html#page-careers'">Careers</button><button onclick="window.location.href='company_pages.html#page-press'">Press</button></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 EVERCARTO. All rights reserved.</span><span style="display:flex;gap:16px;align-items:center">Privacy · Terms · Cookies · <a href="admin.html" style="color:rgba(255,255,255,.4);font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:.2s" onmouseover="this.style.color='rgba(255,255,255,.7)'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Admin</a></span></div>
+  </div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

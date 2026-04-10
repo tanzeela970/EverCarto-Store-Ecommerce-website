@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Evercarto — Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/company.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo" style="cursor:pointer" onclick="window.location.href='index.html'">
+      <img src="assets/logo.png" alt="LUMIÈRE Logo">
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" onclick="toggleDark()" id="darkBtn" title="Toggle theme">🌙</button>
+      <button class="btn-outline" style="padding:12px 20px;font-size:12px" onclick="window.location.href='index.html'">Back to Store</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     ABOUT PAGE
+══════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Our Story</p>
+      <h1>Crafted with <em>Purpose</em></h1>
+      <p class="lead">EVERCARTO was born from a belief that everyday objects should bring genuine joy — that good design, honest materials, and thoughtful curation can transform how we live.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Story -->
+    <div class="about-story">
+      <div class="about-story-img">
+  <img src="https://capturly.com/blog/wp-content/uploads/2018/01/eCommerce-website-search-customer-experience.jpg" alt="Nature">
+</div>
+      <div class="about-story-text">
+        <p class="section-label">How It Began</p>
+        <h2>From a small Lahore studio to Pakistan's most loved lifestyle brand</h2>
+        <p>EVERCARTO was founded in 2019 by two friends — Aisha Kamran and Omar Siddiqui — who were frustrated by the lack of beautifully designed, quality-made everyday products in the Pakistani market. What started as a curated Instagram page quickly grew into a full-scale e-commerce platform.</p>
+        <p>Today we partner with over 80 artisans, independent designers, and premium global suppliers to bring you a collection that balances global aesthetics with local sensibility. Every product is touched by human hands before it reaches yours.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+          <button class="btn-primary" onclick="goPage('careers')">Join Our Team</button>
+          <button class="btn-outline" onclick="goPage('press')">Press & Media</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-row">
+      <div class="stat-item">
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Artisan Partners</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">42K</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="content-section">
+      <p class="section-label">What We Stand For</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:8px">Our Values</h2>
+      <p style="font-size:15px;color:var(--txt2);max-width:540px">Everything we do — from supplier selection to packaging design — is guided by four principles.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-star"></i></div>
+          <div class="value-title">Intentional Curation</div>
+          <div class="value-text">We choose fewer products and choose them well. Every item on EVERCARTO has a clear purpose and earns its place in your home.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-leaf"></i></div>
+          <div class="value-title">Honest Sustainability</div>
+          <div class="value-text">We prefer natural materials, minimal packaging, and long-lasting products over fast-fashion cycles. We're imperfect, but we're always improving.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-handshake"></i></div>
+          <div class="value-title">Artisan Partnership</div>
+          <div class="value-text">We pay fair prices, share brand stories, and build long-term relationships with the makers behind every product we carry.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><i class="fas fa-heart"></i></div>
+          <div class="value-title">Customer Obsession</div>
+          <div class="value-text">From our 30-day return policy to our 24-hour WhatsApp support, we believe the relationship doesn't end at checkout.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Team -->
+    <div class="content-section" style="padding-bottom:80px">
+      <p class="section-label">The People</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:8px">Meet the Team</h2>
+      <p style="font-size:15px;color:var(--txt2);max-width:500px;margin-bottom:0">A small, passionate group of designers, curators, and technologists based in Lahore.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200" alt="Bilal Chaudhry">
+          </div>
+          <div class="team-name">Aisha Kamran</div>
+          <div class="team-role">Co-Founder & CEO</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200" alt="Fatima Rehman">
+          </div>
+          <div class="team-name">Omar Siddiqui</div>
+          <div class="team-role">Co-Founder & CTO</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200" alt="Sana Mirza">
+          </div>
+          <div class="team-name">Sana Mirza</div>
+          <div class="team-role">Head of Design</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200" alt="Bilal Chaudhry">
+          </div>
+          <div class="team-name">Bilal Chaudhry</div>
+          <div class="team-role">Head of Curation</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200" alt="Aisha Kamran">
+          </div>
+          <div class="team-name">Fatima Rehman</div>
+          <div class="team-role">Customer Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="container">
+      <h2>We're just getting started</h2>
+      <p>Every year we expand our collection, deepen our artisan partnerships, and find new ways to bring thoughtful design into your everyday.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn-light" onclick="window.location.href='index.html'">Shop the Collection</button>
+        <button class="btn-light-outline" onclick="goPage('careers')">Join the Team</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     BLOG PAGE
+══════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Journal</p>
+      <h1>Stories, Style &amp; <em>Substance</em></h1>
+      <p class="lead">Inspiration for a more considered life — from styling tips and care guides to conversations with the makers behind the products.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom:80px">
+    <!-- Category filter -->
+    <div style="padding:32px 0 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div class="blog-cats" id="blogCats" style="margin-bottom:0">
+        <button class="blog-cat-btn active" onclick="filterBlog('All',this)">All</button>
+        <button class="blog-cat-btn" onclick="filterBlog('Style',this)">Style</button>
+        <button class="blog-cat-btn" onclick="filterBlog('Home',this)">Home</button>
+        <button class="blog-cat-btn" onclick="filterBlog('Wellness',this)">Wellness</button>
+        <button class="blog-cat-btn" onclick="filterBlog('Behind the Brand',this)">Behind the Brand</button>
+        <button class="blog-cat-btn" onclick="filterBlog('Guides',this)">Guides</button>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <div class="blog-featured" id="blogFeatured"></div>
+
+    <!-- Grid -->
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:24px;color:var(--txt2)">More Articles</h3>
+    <div class="blog-grid" id="blogGrid"></div>
+
+    <!-- Load more -->
+    <div style="text-align:center;padding:16px 0 32px">
+      <button class="btn-outline" style="padding:12px 32px" id="loadMoreBtn" onclick="loadMorePosts()">Load More Articles</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     CAREERS PAGE
+══════════════════════════════════════ -->
+<div class="page" id="page-careers">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Join Us</p>
+      <h1>Build Something <em>Beautiful</em></h1>
+      <p class="lead">We're a small, ambitious team in Lahore. If you care deeply about design, products, and people — we'd love to hear from you.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom:80px">
+    <!-- Culture -->
+    <div style="padding-top:56px">
+      <p class="section-label">Life at EVERCARTO</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:8px">Our Culture</h2>
+      <p style="font-size:15px;color:var(--txt2);max-width:520px">We move fast, think carefully, and take real ownership of our work. No unnecessary hierarchies — just talented people doing great work together.</p>
+      <div class="culture-grid">
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fas fa-bullseye"></i></div>
+          <div class="culture-title">Ownership Mindset</div>
+          <div class="culture-text">Every team member owns their domain. We trust people to make decisions and learn from them.</div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fas fa-globe"></i></div>
+          <div class="culture-title">Remote Friendly</div>
+          <div class="culture-text">Most roles are hybrid or fully remote. We care about output, not office hours.</div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fas fa-book-open"></i></div>
+          <div class="culture-title">Always Learning</div>
+          <div class="culture-text">Annual learning budget, team book clubs, and mentorship from our experienced founders.</div>
+        </div>
+        <div class="culture-card">
+          <div class="culture-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+          <div class="culture-title">Beauty Matters</div>
+          <div class="culture-text">We obsess over design quality — in our products, our code, and our communications.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Benefits -->
+    <div>
+      <p class="section-label">Perks & Benefits</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:32px">What We Offer</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-tags"></i></div><div><div class="benefit-title">Competitive Pay</div><div class="benefit-text">Market-rate salaries with annual reviews tied to impact.</div></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-book-open"></i></div><div><div class="benefit-title">Flexible Leave</div><div class="benefit-text">25 days annual leave + all Pakistani public holidays.</div></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-house-laptop"></i></div><div><div class="benefit-title">Health Coverage</div><div class="benefit-text">Full medical and dental for you and your immediate family.</div></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-tags"></i></div><div><div class="benefit-title">Staff Discount</div><div class="benefit-text">40% off everything in the EVERCARTO store, always.</div></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div><div><div class="benefit-title">Learning Budget</div><div class="benefit-text">Rs 50,000/year for courses, books, or conferences.</div></div></div>
+        <div class="benefit-item"><div class="benefit-icon"><i class="fas fa-house-laptop"></i></div><div><div class="benefit-title">Home Office</div><div class="benefit-text">Equipment stipend of Rs 80,000 for remote workers.</div></div></div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Open roles -->
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px">
+        <div>
+          <p class="section-label" style="margin-bottom:8px">We're Hiring</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:0">Open Positions</h2>
+        </div>
+        <span style="font-size:14px;color:var(--txt3)" id="jobCount"></span>
+      </div>
+      <div class="job-filter-bar" id="jobFilterBar"></div>
+      <div class="job-list" id="jobList"></div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--rad-lg);padding:32px;text-align:center;margin-top:32px">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;margin-bottom:8px">Don't see your role?</p>
+        <p style="font-size:14px;color:var(--txt2);margin-bottom:20px">We're always open to exceptional people. Send your CV and a short note about what you'd bring to the team.</p>
+        <button class="btn-primary" onclick="window.location.href='index.html'">Send a Application</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PRESS PAGE
+══════════════════════════════════════ -->
+<div class="page" id="page-press">
+  <div class="page-hero">
+    <div class="container">
+      <p class="section-label">Media</p>
+      <h1>EVERCARTO in the <em>News</em></h1>
+      <p class="lead">Coverage, interviews, and press releases. For media enquiries, our team responds within one business day.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom:70px">
+    <!-- As seen in -->
+    <div style="padding:32px 0 0">
+      <p style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt3);text-align:center;margin-bottom:20px;font-weight:500">As Seen In</p>
+      <div class="press-hero-strip">
+        <div class="press-logo-pill">Dawn</div>
+        <div class="press-logo-pill">The News</div>
+        <div class="press-logo-pill">Business Recorder</div>
+        <div class="press-logo-pill">Tribune</div>
+        <div class="press-logo-pill">Vogue Pakistan</div>
+        <div class="press-logo-pill">Instep</div>
+        <div class="press-logo-pill">SHE Magazine</div>
+        <div class="press-logo-pill">Mashable Pakistan</div>
+        <div class="press-logo-pill">TechJuice</div>
+      </div>
+    </div>
+
+    <!-- Coverage grid -->
+    <div>
+      <p class="section-label">Recent Coverage</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:32px">What People Are Saying</h2>
+      <div class="press-grid" id="pressGrid"></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Press releases -->
+    <div class="releases-section">
+      <p class="section-label">Official Statements</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:300;margin-bottom:32px">Press Releases</h2>
+      <div id="releasesList"></div>
+    </div>
+
+    <!-- Media contact -->
+    <div class="contact-press">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:8px">Media Contact</div>
+        <p style="font-size:14px;color:var(--txt2);line-height:1.7;margin-bottom:12px">For press enquiries, interview requests, product seedings, or partnership pitches, please reach our communications team directly.</p>
+        <p style="font-size:14px;font-weight:500">press@evercarto.pk</p>
+        <p style="font-size:13px;color:var(--txt3);margin-top:4px">We aim to respond within 1 business day.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER (identical to support_pages) -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-footer" style="cursor:pointer" onclick="goPage('home')">
+        <img src="assets/logo.png" alt="LUMIÈRE Logo" style="height:50px; object-fit:contain;">
+      </div>
+        <p class="footer-tagline">Curating exceptional products for modern living. Quality, design, and craftsmanship in every piece.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Shop</div>
+        <div class="footer-links">
+          <button onclick="window.location.href='index.html'">All Products</button>
+          <button onclick="window.location.href='index.html'">New Arrivals</button>
+          <button onclick="window.location.href='index.html'">Best Sellers</button>
+          <button onclick="window.location.href='index.html'">Sale</button>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <div class="footer-links">
+          <button onclick="window.location.href='support_pages.html#page-faq'">FAQ</button>
+          <button onclick="window.location.href='support_pages.html#page-shipping'">Shipping</button>
+          <button onclick="window.location.href='support_pages.html#page-returns'">Returns</button>
+          <button onclick="window.location.href='support_pages.html#page-contact'">Contact Us</button>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-links">
+          <button onclick="goPage('about')">About</button>
+          <button onclick="goPage('blog')">Blog</button>
+          <button onclick="goPage('careers')">Careers</button>
+          <button onclick="goPage('press')">Press</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Evercarto. All rights reserved.</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/company.js"></script>
+</body>
+</html>

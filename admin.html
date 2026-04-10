@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EVERCARTO — Admin Dashboard</title>
+<link rel="stylesheet" href="css/admin.css"/>
+</head>
+<body>
+
+<!-- ── TOAST ── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ══════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="signin-logo">
+      <div class="logo" onclick="goPage('home')">
+        <img src="assets/logo.png" alt="LUMIÈRE Logo">
+      </div>
+    </div>
+    <div class="login-sub">Admin Panel</div>
+    <form class="login-form" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" id="loginEmail" placeholder="admin@evercarto.pk" value="admin@lumiere.pk"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" type="password" id="loginPass" placeholder="••••••••" value="admin123"/>
+      </div>
+      <div id="loginErr" style="font-size:12px;color:var(--danger);display:none">Invalid credentials. Use admin@lumiere.pk / admin123</div>
+      <button type="submit" class="btn-primary" style="margin-top:8px">Sign In to Dashboard</button>
+    </form>
+    <p class="login-hint">Demo: admin@evercarto.pk / admin123</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN SHELL
+══════════════════════════════════ -->
+<div id="adminShell">
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo" onclick="goPage('home')">
+        <img src="assets/logo.png" alt="LUMIÈRE Logo">
+      </div>
+        <div class="sidebar-role">Admin Dashboard</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Main</div>
+        <div class="nav-item active" onclick="switchSection('dashboard',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </div>
+        <div class="nav-item" onclick="switchSection('analytics',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Analytics
+        </div>
+
+        <div class="nav-section-title">Catalogue</div>
+        <div class="nav-item" onclick="switchSection('products',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Products
+        </div>
+        <div class="nav-item" onclick="switchSection('categories',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+          Categories
+        </div>
+        <div class="nav-item" onclick="switchSection('coupons',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.5" fill="currentColor"/></svg>
+          Coupons
+        </div>
+
+        <div class="nav-section-title">Commerce</div>
+        <div class="nav-item" onclick="switchSection('orders',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Orders
+          <span class="nav-badge" id="ordersNavBadge">0</span>
+        </div>
+        <div class="nav-item" onclick="switchSection('customers',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Customers
+        </div>
+
+        <div class="nav-section-title">System</div>
+        <div class="nav-item" onclick="switchSection('settings',this)">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar">AD</div>
+          <div>
+            <div class="user-name">Admin User</div>
+            <div class="user-email">admin@evercarto.pk</div>
+          </div>
+          <button class="logout-btn icon-btn" onclick="handleLogout()" title="Logout">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN AREA -->
+    <main class="admin-main">
+      <!-- Header -->
+      <header class="admin-header">
+        <button class="mobile-menu-btn icon-btn" onclick="toggleSidebar()">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="header-title" id="pageTitle">Dashboard</h1>
+        <div class="header-actions">
+          <button class="icon-btn" onclick="toggleDarkMode()" id="darkBtn" title="Toggle theme">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <a href="index.html" target="_blank" class="header-store-btn">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Store
+          </a>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="admin-content">
+
+        <!-- ═══════════ DASHBOARD ═══════════ -->
+        <div class="section active" id="sec-dashboard">
+          <div class="stat-grid" id="dashStats"></div>
+          <div class="dash-grid">
+            <!-- Revenue Chart -->
+            <div class="panel col-span2">
+              <div class="panel-header">
+                <span class="panel-title">Revenue Overview</span>
+                <select class="filter-select" style="font-size:12px;padding:6px 12px" onchange="renderRevenueChart(this.value)" id="revPeriod">
+                  <option value="7">Last 7 Days</option>
+                  <option value="30" selected>Last 30 Days</option>
+                  <option value="90">Last 3 Months</option>
+                </select>
+              </div>
+              <div class="chart-container" id="revenueChart"></div>
+            </div>
+          </div>
+          <div class="dash-grid">
+            <!-- Recent Orders -->
+            <div class="panel">
+              <div class="panel-header">
+                <span class="panel-title">Recent Orders</span>
+                <button class="btn-outline-sm" onclick="switchSection('orders',null)">View All</button>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" id="recentOrdersTable"></table>
+              </div>
+            </div>
+            <!-- Top Products + Category Donut -->
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <div class="panel">
+                <div class="panel-header"><span class="panel-title">Top Products</span></div>
+                <div id="topProductsList" style="padding:0 24px 16px"></div>
+              </div>
+              <div class="panel">
+                <div class="panel-header"><span class="panel-title">By Category</span></div>
+                <div class="donut-wrap" id="categoryDonut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ ANALYTICS ═══════════ -->
+        <div class="section" id="sec-analytics">
+          <div class="analytics-kpi" id="analyticsKPI"></div>
+          <div class="dash-grid" style="margin-bottom:20px">
+            <div class="panel col-span2">
+              <div class="panel-header">
+                <span class="panel-title">Sales Trend</span>
+                <select class="filter-select" style="font-size:12px;padding:6px 12px" onchange="renderSalesTrend(this.value)">
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly" selected>Monthly</option>
+                </select>
+              </div>
+              <div class="line-chart-wrap" id="salesTrendChart"></div>
+            </div>
+          </div>
+          <div class="dash-grid">
+            <div class="panel">
+              <div class="panel-header"><span class="panel-title">Category Performance</span></div>
+              <div class="chart-container" id="catPerfChart"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-header"><span class="panel-title">Order Status Breakdown</span></div>
+              <div class="donut-wrap" id="orderStatusDonut"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ PRODUCTS ═══════════ -->
+        <div class="section" id="sec-products">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input class="search-input" id="prodSearch" placeholder="Search products…" oninput="renderProductsTable()"/>
+            </div>
+            <select class="filter-select" id="prodCatFilter" onchange="renderProductsTable()">
+              <option value="">All Categories</option>
+            </select>
+            <select class="filter-select" id="prodStockFilter" onchange="renderProductsTable()">
+              <option value="">All Stock</option>
+              <option value="in">In Stock</option>
+              <option value="out">Out of Stock</option>
+            </select>
+            <button class="btn-add" onclick="openProductModal()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Product
+            </button>
+          </div>
+          <div class="panel" style="border-radius:0 0 var(--rad-lg) var(--rad-lg);border-top:none">
+            <div class="table-wrap">
+              <table class="data-table" id="productsTable">
+                <thead><tr>
+                  <th>Product</th><th>Category</th><th>Price</th><th>Old Price</th>
+                  <th>Stock</th><th>Rating</th><th>Tag</th><th>Actions</th>
+                </tr></thead>
+                <tbody id="productsTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ CATEGORIES ═══════════ -->
+        <div class="section" id="sec-categories">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input class="search-input" id="catSearch" placeholder="Search categories…" oninput="renderCategoriesTable()"/>
+            </div>
+            <button class="btn-add" onclick="openCategoryModal()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Category
+            </button>
+          </div>
+          <div class="panel" style="border-radius:0 0 var(--rad-lg) var(--rad-lg);border-top:none">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Image</th><th>Name</th><th>Products</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="categoriesTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ COUPONS ═══════════ -->
+        <div class="section" id="sec-coupons">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input class="search-input" id="couponSearch" placeholder="Search coupons…" oninput="renderCouponsTable()"/>
+            </div>
+            <button class="btn-add" onclick="openCouponModal()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Coupon
+            </button>
+          </div>
+          <div class="panel" style="border-radius:0 0 var(--rad-lg) var(--rad-lg);border-top:none">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Min Order</th><th>Uses</th><th>Expiry</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="couponsTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ ORDERS ═══════════ -->
+        <div class="section" id="sec-orders">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input class="search-input" id="orderSearch" placeholder="Search orders…" oninput="renderOrdersTable()"/>
+            </div>
+            <select class="filter-select" id="orderStatusFilter" onchange="renderOrdersTable()">
+              <option value="">All Status</option>
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+            <button class="btn-add" onclick="seedDemoOrders()">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+              Seed Demo Orders
+            </button>
+          </div>
+          <div class="panel" style="border-radius:0 0 var(--rad-lg) var(--rad-lg);border-top:none">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                <tbody id="ordersTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ CUSTOMERS ═══════════ -->
+        <div class="section" id="sec-customers">
+          <div class="toolbar">
+            <div class="search-wrap">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input class="search-input" id="custSearch" placeholder="Search customers…" oninput="renderCustomersTable()"/>
+            </div>
+            <select class="filter-select" id="custCityFilter" onchange="renderCustomersTable()">
+              <option value="">All Cities</option>
+              <option>Lahore</option><option>Karachi</option><option>Islamabad</option>
+              <option>Faisalabad</option><option>Multan</option>
+            </select>
+          </div>
+          <div class="panel" style="border-radius:0 0 var(--rad-lg) var(--rad-lg);border-top:none">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Customer</th><th>Email</th><th>City</th><th>Orders</th><th>Total Spent</th><th>Joined</th><th>Actions</th></tr></thead>
+                <tbody id="customersTbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══════════ SETTINGS ═══════════ -->
+        <div class="section" id="sec-settings">
+          <div class="settings-grid">
+            <div class="settings-nav">
+              <div class="settings-nav-item active" onclick="switchSettingsTab('store',this)">Store Settings</div>
+              <div class="settings-nav-item" onclick="switchSettingsTab('appearance',this)">Appearance</div>
+              <div class="settings-nav-item" onclick="switchSettingsTab('notifications',this)">Notifications</div>
+              <div class="settings-nav-item" onclick="switchSettingsTab('account',this)">Admin Account</div>
+            </div>
+            <div id="settingsContent"></div>
+          </div>
+        </div>
+
+      </div><!-- /admin-content -->
+    </main>
+  </div>
+</div>
+
+<!-- ── MODALS ── -->
+<div id="modalBg" class="modal-bg" style="display:none" onclick="closeModal(event)">
+  <div class="modal-box" id="modalBox" onclick="event.stopPropagation()"></div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
